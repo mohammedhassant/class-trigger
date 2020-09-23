@@ -1,0 +1,3 @@
+trigger update_account_contact_Trigger on Contact (after insert, after delete, after update) {
+	update_account_contact_class.update_account_contact_method(Trigger.New);
+}
