@@ -1,0 +1,21 @@
+public class update_account_contact_class {
+    public static void update_account_contact_method(List<contact> conts){
+    Integer NoOfContact ;
+    List<Account> aclist = new List<Account>();
+    
+    for(Contact c : conts){
+        Account ac = [Select Id, Only_Default_Contact__c from Account where Id = :c.AccountId];
+        String accId = c.AccountId;
+        NoOfContact = Database.countQuery('Select count() from Contact where AccountID = :accId');
+        if(NoOfContact <= 1	){
+            ac.Only_Default_Contact__c = TRUE;
+            aclist.add(ac);
+        }
+        else{
+            ac.Only_Default_Contact__c = FALSE;
+            aclist.add(ac);
+        }
+    }
+    update aclist;
+    }
+}
