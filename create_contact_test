@@ -1,9 +1,0 @@
-@isTest
-public class create_account_test {
-	@isTest
-    private static void create_account(){
-        Account ac = new Account(Name = 'SampleAccount');
-        insert ac;
-    }
-}
-
